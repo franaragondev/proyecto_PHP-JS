@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="utf-8">
+    <title>FRAN ARAGÓN</title>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/horario.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <LINK REL=StyleSheet HREF="style.css" TYPE="text/css" MEDIA=screen />
+    <style>
+        table {
+            background-color: white;
+        }
+
+        td {
+            padding: 0.4rem;
+        }
+
+        #admin_tabla1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        #horario_admin {
+            overflow: scroll;
+            height: 300px;
+            width: 315px;
+        }
+
+        #horario_admin table {
+            width: 300px;
+        }
+
+        #horario_admin table td {
+            cursor: pointer;
+        }
+
+        #horario_admin2 {
+            overflow: scroll;
+            height: 300px;
+            width: 315px;
+        }
+
+        #horario_admin2 table {
+            width: 300px;
+        }
+
+        #horario_admin2 table td {
+            cursor: pointer;
+        }
+
+        #flechas {
+            display: flex;
+            flex-flow: column;
+        }
+
+        #flecha_der {
+            width: 4rem;
+            margin: 4rem;
+            margin-top: 2;
+            cursor: pointer;
+        }
+
+        #flecha_izq {
+            width: 4rem;
+            margin: 4rem;
+            transform: rotate(180deg);
+            cursor: pointer;
+            margin-top: 0;
+        }
+
+        #botones {
+            display: flex;
+            justify-content: center;
+        }
+
+        #seleccionar_todos_noAusente {
+            cursor: pointer;
+            margin-right: 30%;
+        }
+
+        #seleccionar_todos_ausente {
+            cursor: pointer;
+        }
+
+        #horario_admin3 {
+            margin-left: 22%;
+        }
+
+        .ocultar_border {
+            border-top: 1px solid lightblue;
+            border-left: 1px solid lightblue;
+            background-color: lightblue;
+        }
+
+        th {
+            background-color: #F5BD99;
+        }
+
+        #btn_imprimir {
+            position: absolute;
+            border: 0;
+            height: 1.5rem;
+            width: 6rem;
+            margin-top: -4rem;
+            margin-left: 75%;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1>GESTIÓN DE GUARDIAS</h1>
+    <picture>
+        <img onclick="mostrar_login()" class="visible" id='icono_login'
+            src='img/round-account-button-with-user-inside_icon-icons.com_72596.png' />
+    </picture>
+
+    <picture>
+        <img class="visible" id='logo' src="img/logo.png" />
+    </picture>
+
+
+    <div class="oculta" id="vista_error"></div>
+
+
+    <div class="oculta" id="vista_login">
+        <h2>Iniciar Sesión</h2>
+        <form id="formLogin" method="POST" action="index.html" onsubmit="return hacer_login();">
+            <input type="text" id="usuario" name="usuario" placeholder="Introduzca su usuario" required /><br /><br />
+            <input type="password" id="clave" name="clave" placeholder="Introduzca su clave acceso"
+                required /><br /><br />
+            <input id='btn_login' type="submit" name="login" value="Entrar" />
+            <br /><br />
+            <div id="error_login"></div>
+        </form>
+    </div>
+
+
+    <div class="oculta" id="vista_normal">
+        <div id="saludo_n"></div>
+        <div id="saludo_n2"></div>
+        <div id="horario"></div>
+        <div class="oculta" id="listar_n"></div>
+    </div>
+
+    <div class="oculta" id="vista_admin">
+        <button id='btn_imprimir' type="button" onclick="javascript:imprSelec('horario_admin3')">Imprimir</button>
+        <div id="saludo"></div>
+        <p id="dia_fecha"></p>
+        <form method='post'>
+            <input type='date' onchange="dia_calendario();submit()" id="date" />
+        </form>
+        <br /><br />
+        <div id='admin_tabla1'>
+            <div id="horario_admin"></div>
+            <div id='flechas'>
+                <picture>
+                    <img onclick="pasar_a_ausente()" id='flecha_der'
+                        src='img/1486348528-forward-arrows-arrow-front-go_80452.png' />
+                </picture>
+                <picture>
+                    <img onclick="pasar_a_noAusente()" id='flecha_izq'
+                        src='img/1486348528-forward-arrows-arrow-front-go_80452.png' />
+                </picture>
+            </div>
+            <div id="horario_admin2"></div>
+        </div>
+        <div id='botones'>
+            <button
+                onclick="seleccionar_todos_noAusente(localStorage.getItem('fecha_dia'), localStorage.getItem('numero_dia'))"
+                id='seleccionar_todos_noAusente'>Seleccionar Todo</button>
+            <button onclick="seleccionar_todos_ausente(localStorage.getItem('fecha_dia'))"
+                id='seleccionar_todos_ausente'>Seleccionar Todo</button>
+        </div>
+        <br /><br />
+        <div id="horario_admin3"></div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        /*Obtener datos almacenados*/
+        var fecha = localStorage.getItem("fecha_dia");
+        var text_fecha = localStorage.getItem('mostrar_fecha_dia')
+
+        /*Mostrar datos almacenados*/
+        document.getElementById("date").value = fecha;
+        $('#dia_fecha').html(text_fecha);
+    });
+</script>
+
+</html>

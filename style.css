@@ -1,0 +1,106 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    text-align: center;
+    font-family: Quicksand;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td,
+th {
+    border: 1px solid black;
+}
+
+th {
+    background-color: lightpink;
+}
+
+.visible {
+    display: block
+}
+
+.oculta {
+    display: none
+}
+
+.enlace {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue
+}
+
+#icono_login {
+    position: absolute;
+    width: 2rem;
+    margin-top: -3.5rem;
+    margin-left: 90%;
+    cursor: pointer;
+}
+
+#vista_login {
+    border: 1px solid lightgray;
+    text-align: center;
+    height: 20rem;
+    width: 20rem;
+    background-color: lightgray;
+    margin: auto;
+}
+
+#formLogin {
+    margin-top: 5%;
+    font-size: 22px;
+}
+
+#btn_login {
+    background-color: white;
+    border: 0;
+    width: 10rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+#usuario{
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    height: 1.5rem;
+}
+
+#clave{
+    border: 0;
+    height: 1.5rem;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+}
+
+#error_login{
+    color: red;
+}
+
+#logo{
+    width: 30rem;
+    margin: auto;
+}
+
+#vista_normal{
+    display: flex;
+    flex-flow: column;
+}
+#horario{
+    margin: auto;
+    display: block;
+}
+
+#date{
+    display: block;
+    margin: auto;
+}
