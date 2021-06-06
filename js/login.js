@@ -1,13 +1,13 @@
-const DIR_SERV = "servicios_rest";
+const DIR_SERV = "https://horarioescolar.netlify.app/servicios_rest";
 const TIEMPO_INACT = 10;
 
 $(document).ready(function () {
     $.ajax({
-            url: DIR_SERV + '/logueado',
-            type: "GET",
-            // Formato de datos que se espera en la respuesta
-            dataType: "json",
-        })
+        url: DIR_SERV + '/logueado',
+        type: "GET",
+        // Formato de datos que se espera en la respuesta
+        dataType: "json",
+    })
         .done(function (data) {
             if (data.usuario) {
                 if (data.usuario["tipo"] == "normal") {
@@ -73,11 +73,11 @@ $(document).ready(function () {
 function imprSelec(nombre) {
     var ficha = document.getElementById(nombre);
     var ventimp = window.open(' ', 'popimpr');
-    ventimp.document.write( ficha.innerHTML );
+    ventimp.document.write(ficha.innerHTML);
     ventimp.document.close();
-    ventimp.print( );
+    ventimp.print();
     ventimp.close();
-  }
+}
 
 function vista_error(mensaje) {
     $('#vista_login').removeClass('visible');
